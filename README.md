@@ -73,7 +73,7 @@ IListener<TModel> Interval(int _interval)
 ```
 <p>当执行监听函数后，线程将挂起一段时间.</p>
 <em>参数</em>
-<p><em>_interval</em> ：线程挂起的事件</p>
+<p><em>_interval</em> ：线程挂起的时间</p>
 
 #### Times
 ``` CSharp
@@ -102,39 +102,55 @@ IListener<TModel> Build()
 ``` CSharp
 void Start()
 ```
+<p>启动监听器.</p>
+
 #### Stop
 ``` CSharp
 void Stop()
 ```
+<p>停止监听器.</p>
 
-## ListenerContext
-### Properties
-#### SyncContext
+## ListenerContext 监听器上下文类
+### Properties 属性
+#### SyncContext 
 ``` CSharp
 SynchronizationContext SyncContext
 ```
+<p>提供线程通信的能力。详情可以参照MSDN<a href="https://msdn.microsoft.com/en-us/library/system.threading.synchronizationcontext.aspx"> : SynchronizationContext Class</a></p>
+
 #### IsRunning
 ``` CSharp
 bool IsRunning
 ```
+<p>获取或设置监听器的运行状态, RequestStop函数实际就是修改这个属性的值.</p>
+
 #### TempData
 ``` CSharp
 Hashtable TempData
 ```
+<p>这个哈希表可以在一次监听过程中的不同函数体间传递数据,其生命周期会在下一次执行监听函数前被重置.</p>
+
 #### WorkThread
 ``` CSharp
 Thread WorkThread
 ```
+<p>负责执行整个监听过程的工作线程.</p>
+
 #### Counter
 ``` CSharp
 ICounter Counter
 ```
+<p>计数器.</p>
+
 #### ListenerContext<<TModel>>.Model
 ```CSharp
 TModel ListenerContext<TModel>.Model
 ```
-### Methods
+<p>此属性只在ListenerContext的泛型类中存在,用于表示TModel的实例对象.</p>
+
+### Methods 方法
 #### RequestStop
 ``` CSharp
 void RequestStop()
 ```
+<p>修改 IsRunning 的值为 false, 并等待工作线程退出. </p>
