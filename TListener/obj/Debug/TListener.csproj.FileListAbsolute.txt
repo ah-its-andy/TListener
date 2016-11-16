@@ -1,4 +1,0 @@
-D:\Source\Repos\Huodi\TListener\TListener\bin\Debug\TListener.dll
-D:\Source\Repos\Huodi\TListener\TListener\bin\Debug\TListener.pdb
-D:\Source\Repos\Huodi\TListener\TListener\obj\Debug\TListener.dll
-D:\Source\Repos\Huodi\TListener\TListener\obj\Debug\TListener.pdb

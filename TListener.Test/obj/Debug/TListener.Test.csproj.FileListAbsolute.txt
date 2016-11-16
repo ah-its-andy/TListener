@@ -1,8 +1,0 @@
-D:\Source\Repos\Huodi\TListener\TListener.Test\bin\Debug\TListener.Test.exe.config
-D:\Source\Repos\Huodi\TListener\TListener.Test\bin\Debug\TListener.Test.exe
-D:\Source\Repos\Huodi\TListener\TListener.Test\bin\Debug\TListener.Test.pdb
-D:\Source\Repos\Huodi\TListener\TListener.Test\bin\Debug\TListener.dll
-D:\Source\Repos\Huodi\TListener\TListener.Test\bin\Debug\TListener.pdb
-D:\Source\Repos\Huodi\TListener\TListener.Test\obj\Debug\TListener.Test.csprojResolveAssemblyReference.cache
-D:\Source\Repos\Huodi\TListener\TListener.Test\obj\Debug\TListener.Test.exe
-D:\Source\Repos\Huodi\TListener\TListener.Test\obj\Debug\TListener.Test.pdb

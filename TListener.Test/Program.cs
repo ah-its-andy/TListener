@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace TListener.Test
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var lastDate = DateTime.Now;
             var listener = new TListener.Listener<string>()
@@ -26,7 +25,7 @@ namespace TListener.Test
                            .Log(x => Console.WriteLine("Log - Times : " + x.Counter.Count().ToString()))
                            .Exit(x => Console.WriteLine("Exit"))
                            .Interval(5000)
-                           .Times(5, x => Console.WriteLine("Times Out"))                           
+                           .Times(5, x => Console.WriteLine("Times Out"))
                            .Build();
             listener.Start();
 
