@@ -10,18 +10,19 @@ public class Program
     {
         var lastDate = DateTime.Now;
         var listener = new TListener.Listener<string>()
-                      .Listen(x =>
+                      .Listen(x => '匿名参数是一个ListenerContext对象
                        {
-                           return true;
+                           return true; //监听器将循环执行此函数，直到函数体返回true，则跳转至Success中的函数体
                        })
                       .Success(x =>
                        {
-                           x.SyncContext.Post(s =>
-                           {
-                               Console.WriteLine(DateTime.Now.ToString());
-                           }, null);
+                           x.SyncContext //SyncContext可以用于向主线程发送函数体
+                            .Post(s =>
+                            {
+                                Console.WriteLine(DateTime.Now.ToString()); //Post中的操作会切换到主线程执行
+                            }, null);
                        })
-                      .Log(x => Console.WriteLine("Log - Times : " + x.Counter.Count().ToString()))
+                      .Log(x => Console.WriteLine("Log - Times : " + x.Counter.Count().ToString())) //监听函数体每次执行都将在函数最后执行Log函数体
                       .Exit(x => Console.WriteLine("Exit"))
                       .Interval(5000)
                       .Times(5, x => Console.WriteLine("Times Out"))
