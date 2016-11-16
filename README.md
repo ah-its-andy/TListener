@@ -10,24 +10,24 @@ public class Program
     {
         var lastDate = DateTime.Now;
         var listener = new TListener.Listener<string>()
-                      .Listen(x => '匿名参数是一个ListenerContext对象
+                      .Listen(x => /*匿名参数是一个ListenerContext对象*/
                        {
-                           return true; //监听器将循环执行此函数，直到函数体返回true，则跳转至Success中的函数体
+                           return true; /*监听器将循环执行此函数，直到函数体返回true，则跳转至Success中的函数体*/
                        })
                       .Success(x =>
                        {
-                           x.SyncContext //SyncContext可以用于向主线程发送函数体
+                           x.SyncContext /*SyncContext可以用于向主线程发送函数体*/
                             .Post(s =>
                             {
-                                Console.WriteLine(DateTime.Now.ToString()); //Post中的操作会切换到主线程执行
+                                Console.WriteLine(DateTime.Now.ToString()); /*Post中的操作会切换到主线程执行*/
                             }, null);
                        })
-                      .Log(x => Console.WriteLine("Log - Times : " + x.Counter.Count().ToString())) //监听函数体每次执行都将在函数最后执行Log函数体
-                      .Exit(x => Console.WriteLine("Exit"))
-                      .Interval(5000)
-                      .Times(5, x => Console.WriteLine("Times Out"))
-                      .Build();
-        listener.Start();
+                      .Log(x => Console.WriteLine("Log - Times : " + x.Counter.Count().ToString())) /*监听函数体每次执行都将在函数最后执行Log函数体*/
+                      .Exit(x => Console.WriteLine("Exit"))/*当监听器结束监听时，运行此函数体*/
+                      .Interval(5000)/*监听器执行监听函数体的间隔*/
+                      .Times(5, x => Console.WriteLine("Times Out"))/*监听器Success函数得次数，并在次数达到后执行函数体*/
+                      .Build();/*构建监听器，在开始监听前必须先构建监听器*/
+        listener.Start();/*开始监听*/
         Console.ReadKey();
     }
 }
