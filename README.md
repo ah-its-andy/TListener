@@ -37,36 +37,67 @@ public class Program
 ### Methods
 #### Listen
 ``` CSharp
-IListener<TModel> Listen(Func<ListenerContext<TModel>, bool>)
+IListener<TModel> Listen(Func<ListenerContext<TModel>, bool> _handler)
 ```
+<p>设置监听操作，当函数返回true则执行Success，如果抛出异常则执行Error.</p>
+<em>参数</em>
+<p><em>_handler</em> ：监听函数体</p>
+
 #### Success
 ``` CSharp
-IListener<TModel> Success(Action<ListenerContext<TModel>>)
+IListener<TModel> Success(Action<ListenerContext<TModel>> _handler)
 ```
+<p>当监听函数返回true时，执行此函数体.</p>
+<em>参数</em>
+<p><em>_handler</em> ：函数体</p>
+
 #### Error
 ``` CSharp
-IListener<TModel> Error(Action<ListenerContext<TModel>, Exception>)
+IListener<TModel> Error(Action<ListenerContext<TModel>, Exception> _handler)
 ```
+<p>当监听函数抛出异常时，执行此函数体.</p>
+<em>参数</em>
+<p><em>_handler</em> ：异常处理函数体</p>
+
 #### Log
 ``` CSharp
-IListener<TModel> Log(Action<ListenerContext<TModel>>)
+IListener<TModel> Log(Action<ListenerContext<TModel>> _handler)
 ```
+<p>每当执行监听函数后，执行此函数.</p>
+<em>参数</em>
+<p><em>_handler</em> ：日志函数体</p>
+
 #### Interval
 ``` CSharp
-IListener<TModel> Interval(int
+IListener<TModel> Interval(int _interval)
 ```
+<p>当执行监听函数后，线程将挂起一段时间.</p>
+<em>参数</em>
+<p><em>_interval</em> ：线程挂起的事件</p>
+
 #### Times
 ``` CSharp
-IListener<TModel> Times(int, Action<ListenerContext<TModel>>?);
+IListener<TModel> Times(int times, Action<ListenerContext<TModel>>? _handler);
 ```
+<p>设置一个值,指示Success函数执行的最大次数.</p>
+<em>参数</em>
+<p><em>times</em> ：Success函数执行的最大次数.</p>
+<p><em>?_handler</em> ：当Success函数执行次数达到最大次数时,执行此函数.</p>
+
 #### Exit
 ``` CSharp
-IListener<TModel> Exit(Action<ListenerContext<TModel>>)
+IListener<TModel> Exit(Action<ListenerContext<TModel>> _handler)
 ```
+<p>当监听器退出时，执行此函数体.</p>
+<em>参数</em>
+<p><em>_handler</em> ：函数体</p>
+
 #### Build
 ``` CSharp
 IListener<TModel> Build()
 ```
+<p>构建监听器,必须先构建监听器才能启动.</p>
+
 #### Start
 ``` CSharp
 void Start()
