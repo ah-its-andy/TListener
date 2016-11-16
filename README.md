@@ -32,45 +32,76 @@ public class Program
 ```
 # Api Document
 ## IListener<TModel>
-### Listen
+### Methods
+#### Listen
 ``` CSharp
 IListener<TModel> Listen(Func<ListenerContext<TModel>, bool>)
 ```
-### Success
+#### Success
 ``` CSharp
 IListener<TModel> Success(Action<ListenerContext<TModel>>)
 ```
-### Error
+#### Error
 ``` CSharp
 IListener<TModel> Error(Action<ListenerContext<TModel>, Exception>)
 ```
-### Log
+#### Log
 ``` CSharp
 IListener<TModel> Log(Action<ListenerContext<TModel>>)
 ```
-### Interval
+#### Interval
 ``` CSharp
 IListener<TModel> Interval(int
 ```
-### Times
+#### Times
 ``` CSharp
 IListener<TModel> Times(int, Action<ListenerContext<TModel>>?);
 ```
-### Exit
+#### Exit
 ``` CSharp
 IListener<TModel> Exit(Action<ListenerContext<TModel>>)
 ```
-### Build
+#### Build
 ``` CSharp
 IListener<TModel> Build()
 ```
-### Start
+#### Start
 ``` CSharp
 void Start()
 ```
-### Stop
+#### Stop
 ``` CSharp
 void Stop()
 ```
 
-
+## ListenerContext
+### Properties
+#### SyncContext
+``` CSharp
+SynchronizationContext SyncContext
+```
+#### IsRunning
+``` CSharp
+bool IsRunning
+```
+#### TempData
+``` CSharp
+Hashtable TempData
+```
+#### WorkThread
+``` CSharp
+Thread WorkThread
+```
+#### Counter
+``` CSharp
+ICounter Counter
+```
+#### ListenerContext<<TModel>>.Model
+```CSharp
+TModel ListenerContext<TModel>.Model
+```
+### Methods
+#### RequestStop
+``` CSharp
+void RequestStop()
+```
