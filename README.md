@@ -30,3 +30,46 @@ public class Program
     }
 }
 ```
+# Api Document
+### Listen
+``` CSharp
+IListener<TModel> Listen(Func<ListenerContext<TModel>, bool>)
+```
+### Success
+``` CSharp
+IListener<TModel> Success(Action<ListenerContext<TModel>>)
+```
+### Error
+``` CSharp
+IListener<TModel> Error(Action<ListenerContext<TModel>, Exception>)
+```
+### Log
+``` CSharp
+IListener<TModel> Log(Action<ListenerContext<TModel>>)
+```
+### Interval
+``` CSharp
+IListener<TModel> Interval(int
+```
+### Times
+``` CSharp
+IListener<TModel> Times(int, Action<ListenerContext<TModel>>?);
+```
+### Exit
+``` CSharp
+IListener<TModel> Exit(Action<ListenerContext<TModel>>)
+```
+### Build
+``` CSharp
+IListener<TModel> Build()
+```
+### Start
+``` CSharp
+void Start()
+```
+### Stop
+``` CSharp
+void Stop()
+```
+
+
